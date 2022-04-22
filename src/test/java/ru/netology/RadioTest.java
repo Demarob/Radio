@@ -52,18 +52,18 @@ public class RadioTest {
     }
 
     @Test
-    public void setToMaxVolume() {
+    public void setMaxVolume() {
         radio.setCurrentVolume(100);
         int expected = 100;
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getMaxVolume();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void setToMinVolume() {
+    public void setMinVolume() {
         radio.setCurrentVolume(0);
         int expected = 0;
-        int actual = radio.getCurrentVolume();
+        int actual = radio.getMinVolume();
         assertEquals(expected, actual);
     }
 
@@ -136,7 +136,7 @@ public class RadioTest {
     }
 
     @Test
-    public void setToMaxChanel() {
+    public void setCurrentMaxChanel() {
         radio.setCurrentChanel(9);
         int expected = 9;
         int actual = radio.getCurrentChanel();
@@ -146,10 +146,71 @@ public class RadioTest {
 
 
     @Test
-    public void setToMinChanel() {
+    public void setCurrentMinChanel() {
         radio.setCurrentChanel(0);
         int expected = 0;
         int actual = radio.getCurrentChanel();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldNextChanel() {
+        radio.setCurrentChanel(6);
+        radio.nextChanel();
+        assertEquals(7, radio.getCurrentChanel());
+    }
+
+    @Test
+    void shouldPrevChanel() {
+        radio.setCurrentChanel(6);
+        radio.prevChanel();
+        assertEquals(5, radio.getCurrentChanel());
+    }
+
+    @Test
+    void shouldSetChanelOverMaxChanel() {
+        radio.setCurrentChanel(10);
+        assertEquals(0, radio.getCurrentChanel());
+    }
+
+    @Test
+    void shouldSetCurrentChanelUnderMinChanel() {
+        radio.setCurrentChanel(-1);
+        assertEquals(0, radio.getCurrentChanel());
+    }
+    @Test
+    void shouldOverMaxStation1() {
+        radio.setCurrentChanel(9);
+        radio.nextChanel();
+        assertEquals(0, radio.getCurrentChanel());
+    }
+
+    @Test
+    void shouldOverMaxStation2() {
+        radio.setCurrentChanel(10);
+        radio.nextChanel();
+        assertEquals(1, radio.getCurrentChanel());
+    }
+
+    @Test
+    void shouldPrevStation() {
+        radio.setCurrentChanel(4);
+        radio.prevChanel();
+        assertEquals(3, radio.getCurrentChanel());
+    }
+
+    @Test
+    void shouldBelowMinStation1() {
+        radio.setCurrentChanel(0);
+        radio.prevChanel();
+        assertEquals(9, radio.getCurrentChanel());
+    }
+
+    @Test
+    void shouldBelowMinStation2() {
+        radio.setCurrentChanel(-1);
+        radio.prevChanel();
+        assertEquals(9, radio.getCurrentChanel());
+    }
 }
+

@@ -89,7 +89,7 @@ public class Radio {
     }
 
     public void nextChanel() {
-        if (currentChanel >= 9) {
+        if (currentChanel >= maxChanel) {
             setCurrentChanel(minChanel);
         }
         else {

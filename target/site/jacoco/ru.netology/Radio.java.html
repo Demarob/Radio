@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Radio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Radio</a> &gt; <a href="index.source.html" class="el_package">ru.netology</a> &gt; <span class="el_source">Radio.java</span></div><h1>Radio.java</h1><pre class="source lang-java linenums">package ru.netology;
+
+
+public class Radio {
+<span class="pc" id="L5">    private int maxChanel = 9;</span>
+<span class="pc" id="L6">    private int minChanel = 0;</span>
+    private int currentChanel;
+    private int currentVolume;
+<span class="pc" id="L9">    private int maxVolume = 100;</span>
+<span class="pc" id="L10">    private int minVolume = 0;</span>
+
+
+<span class="nc" id="L13">    public Radio(int maxChanel, int minChanel, int currentChanel, int currentVolume, int maxVolume, int minVolume) {</span>
+<span class="nc" id="L14">        this.maxChanel = maxChanel;</span>
+<span class="nc" id="L15">        this.minChanel = minChanel;</span>
+<span class="nc" id="L16">        this.currentChanel = currentChanel;</span>
+<span class="nc" id="L17">        this.currentVolume = currentVolume;</span>
+<span class="nc" id="L18">        this.maxVolume = maxVolume;</span>
+<span class="nc" id="L19">        this.minVolume = minVolume;</span>
+<span class="nc" id="L20">    }</span>
+
+
+<span class="fc" id="L23">    public Radio() {</span>
+<span class="fc" id="L24">    }</span>
+
+    public int getNumberOfChanel(){
+<span class="fc" id="L27">        return currentChanel;</span>
+    }
+
+
+    public int getMaxChanel() {
+<span class="nc" id="L32">        return maxChanel;</span>
+    }
+
+    public void setMaxChanel(int maxChanel) {
+<span class="nc" id="L36">        currentChanel = maxChanel;</span>
+<span class="nc" id="L37">    }</span>
+
+    public int getMinChanel() {
+<span class="nc" id="L40">        return minChanel;</span>
+    }
+
+    public void setMinChanel(int minChanel) {
+<span class="nc" id="L44">        currentChanel = minChanel;</span>
+<span class="nc" id="L45">    }</span>
+
+    public int getCurrentChanel() {
+<span class="fc" id="L48">        return currentChanel;</span>
+    }
+
+    public void setCurrentChanel(int currentChanel) {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (currentChanel &gt; maxChanel) {</span>
+<span class="fc" id="L53">            return;</span>
+        }
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (currentChanel &lt; minChanel) {</span>
+<span class="fc" id="L56">            return;</span>
+        }
+<span class="fc" id="L58">        this.currentChanel = currentChanel;</span>
+<span class="fc" id="L59">    }</span>
+
+    public int getCurrentVolume() {
+<span class="fc" id="L62">        return currentVolume;</span>
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (currentVolume &gt; maxVolume) {</span>
+<span class="fc" id="L67">            return;</span>
+        }
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (currentVolume &lt; minVolume) {</span>
+<span class="fc" id="L70">            return;</span>
+        }
+<span class="fc" id="L72">        this.currentVolume = currentVolume;</span>
+<span class="fc" id="L73">    }</span>
+
+    public int getMaxVolume() {
+<span class="fc" id="L76">        return maxVolume;</span>
+    }
+
+    public void setMaxVolume() {
+<span class="nc" id="L80">        currentVolume = maxVolume;</span>
+<span class="nc" id="L81">    }</span>
+
+    public int getMinVolume() {
+<span class="fc" id="L84">        return minVolume;</span>
+    }
+
+    public void setMinVolume() {
+<span class="nc" id="L88">        currentVolume = minVolume;</span>
+<span class="nc" id="L89">    }</span>
+
+    public void nextChanel() {
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if (currentChanel &gt;= maxChanel) {</span>
+<span class="fc" id="L93">            setCurrentChanel(minChanel);</span>
+        }
+        else {
+<span class="fc" id="L96">            setCurrentChanel(currentChanel + 1);</span>
+        }
+<span class="fc" id="L98">    }</span>
+
+
+
+    public void prevChanel() {
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if (currentChanel &lt;= minChanel) {</span>
+<span class="fc" id="L104">            setCurrentChanel(maxChanel);</span>
+        }
+        else {
+<span class="fc" id="L107">            setCurrentChanel(currentChanel - 1);</span>
+        }
+<span class="fc" id="L109">    }</span>
+
+    public void increaseVolume() {
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (currentVolume &lt; maxVolume) {</span>
+<span class="fc" id="L113">            setCurrentVolume(currentVolume + 1);</span>
+        }
+<span class="fc" id="L115">    }</span>
+
+    public void lowerVolume() {
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (currentVolume &gt; minVolume) {</span>
+<span class="fc" id="L119">            setCurrentVolume(currentVolume - 1);</span>
+        }
+<span class="fc" id="L121">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
