@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
     Radio radio = new Radio();
-    Radio radio2 = new Radio(10);
+    Radio radio2 = new Radio(20);
+
 
     @Test
     public void shouldUseRadio() {
@@ -16,7 +17,7 @@ public class RadioTest {
 
     @Test
     public void shouldUseRadio2() {
-        radio.setCurrentChanel(10);
+        radio.setCurrentChanel(20);
         assertEquals(0, radio.getNumberOfChanel());
     }
 
@@ -114,7 +115,7 @@ public class RadioTest {
 
     @Test
     public void testChanel2() {
-        radio.setCurrentChanel(10);
+        radio.setCurrentChanel(20);
         int expected = 0;
         int actual = radio.getCurrentChanel();
         assertEquals(expected, actual);
@@ -170,7 +171,7 @@ public class RadioTest {
 
     @Test
     void shouldSetChanelOverMaxChanel() {
-        radio.setCurrentChanel(10);
+        radio.setCurrentChanel(22);
         assertEquals(0, radio.getCurrentChanel());
     }
 
@@ -181,14 +182,14 @@ public class RadioTest {
     }
     @Test
     void shouldOverMaxStation1() {
-        radio.setCurrentChanel(9);
+        radio.setCurrentChanel(19);
         radio.nextChanel();
         assertEquals(0, radio.getCurrentChanel());
     }
 
     @Test
     void shouldOverMaxStation2() {
-        radio.setCurrentChanel(10);
+        radio.setCurrentChanel(20);
         radio.nextChanel();
         assertEquals(1, radio.getCurrentChanel());
     }
@@ -204,14 +205,20 @@ public class RadioTest {
     void shouldBelowMinStation1() {
         radio.setCurrentChanel(0);
         radio.prevChanel();
-        assertEquals(9, radio.getCurrentChanel());
+        assertEquals(19, radio.getCurrentChanel());
     }
 
     @Test
     void shouldBelowMinStation2() {
         radio.setCurrentChanel(-1);
         radio.prevChanel();
-        assertEquals(9, radio.getCurrentChanel());
+        assertEquals(19, radio.getCurrentChanel());
     }
+    @Test
+    public void fifteenStation() {
+        radio.setCurrentChanel(15);
+        assertEquals(15, radio.getNumberOfChanel());
+    }
+
 }
 
