@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
     Radio radio = new Radio();
+    Radio radio2 = new Radio(10);
 
     @Test
     public void shouldUseRadio() {
